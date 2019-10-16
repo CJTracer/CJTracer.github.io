@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="赛场上被C题打自闭了。">
+<meta name="keywords" content="CF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round #592 (Div.2)">
+<meta property="og:url" content="http://yoursite.com/2019/10/15/Codeforces-Round-592-Div-2/index.html">
+<meta property="og:site_name" content="CJ_Tracerのblog">
+<meta property="og:description" content="赛场上被C题打自闭了。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-16T00:08:47.847Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codeforces Round #592 (Div.2)">
+<meta name="twitter:description" content="赛场上被C题打自闭了。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/15/Codeforces-Round-592-Div-2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Codeforces Round #592 (Div.2) | CJ_Tracerのblog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CJ_Tracerのblog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">My fear is not real.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/15/Codeforces-Round-592-Div-2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CJ_Tracer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CJ_Tracerのblog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Codeforces Round #592 (Div.2)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-15 08:00:14" itemprop="dateCreated datePublished" datetime="2019-10-15T08:00:14+08:00">2019-10-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-16 08:08:47" itemprop="dateModified" datetime="2019-10-16T08:08:47+08:00">2019-10-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/比赛/" itemprop="url" rel="index"><span itemprop="name">比赛</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>赛场上被C题打自闭了。</p>
+<a id="more"></a>
+<h2 id="A-Pen-and-Pencil"><a href="#A-Pen-and-Pencil" class="headerlink" title="A Pen and Pencil"></a>A Pen and Pencil</h2><p>讨论两组数相除向上取整是否小于铅笔盒的容量。</p>
+<h2 id="B-Rooms-and-Staircases"><a href="#B-Rooms-and-Staircases" class="headerlink" title="B Rooms and Staircases"></a>B Rooms and Staircases</h2><p>######题目描述</p>
+<p>有两层楼梯，一层有$N$个房间，房间是互通的。输入一串01串，1表示当前房间可以通向楼上或者楼下。问一次不走回头路的走法最多可以到达几个房间。</p>
+<h6 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h6><p>手玩样例即可发现，如果在最左边和最右边的房间有楼梯，显然是可以走完$2<em>N$也就是所有的房间。这个楼梯每往中间缩一格，就会少到达2个房间。讨论楼梯对于答案的最大价值$T$。$T$就应该是离最左边或者最右边较小的那个值。用$(N-T+1)</em>2$便得到结果。</p>
+<h2 id="C-Football-Season"><a href="#C-Football-Season" class="headerlink" title="C Football Season"></a>C Football Season</h2><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>给定四个数$n,p,d,w$$(d\ge w)$</p>
+<p>求三个合理解$(x,y,z)$，其中$x,y,z\ge0$</p>
+<p>使得</p>
+<p>$x<em>w+y</em>d=p$</p>
+<p>$x+y+z=n$</p>
+<h6 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h6><p>一开始拿扩欧做的。后来发现不好处理正整数解这一点。</p>
+<p>后来采取暴力方法。</p>
+<p>考虑到$d\ge w$所以把$p$分为几个$lcm(d,w)$大小的块，全部分配给$x$，最后余留的部分和1个$lcm$去暴力枚举$x$的取值，判断对应$y$是否有正整数解。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">using namespace std;</span><br><span class="line">namespace Sonoda</span><br><span class="line">&#123;</span><br><span class="line">	template&lt;typename T&gt; void swap(T &amp;a,T &amp;b)</span><br><span class="line">	&#123;</span><br><span class="line">		T t;</span><br><span class="line">		t=a;</span><br><span class="line">		a=b;</span><br><span class="line">		b=t;</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt; T GCD(T a,T b)</span><br><span class="line">	&#123;</span><br><span class="line">		if(b==0)</span><br><span class="line">		&#123;</span><br><span class="line">			return a;</span><br><span class="line">		&#125;</span><br><span class="line">		return GCD(b,a%b);</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt;T Qpow(T a,T b,T p)</span><br><span class="line">	&#123;</span><br><span class="line">		T res=1;</span><br><span class="line">		while(b)</span><br><span class="line">		&#123;</span><br><span class="line">			if(b&amp;1)</span><br><span class="line">			&#123;</span><br><span class="line">				res*=a;</span><br><span class="line">				res%=p;</span><br><span class="line">				b--;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				a*=a;</span><br><span class="line">				a%=p;</span><br><span class="line">				b&gt;&gt;=1;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br><span class="line">	template &lt;typename T&gt; void Ex_GCD(T a,T b,T &amp;x,T &amp;y)</span><br><span class="line">	&#123;</span><br><span class="line">		if(b==0)</span><br><span class="line">		&#123;</span><br><span class="line">			x=1;</span><br><span class="line">			y=0;</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		Ex_GCD(b,a%b,x,y);</span><br><span class="line">		T t=x;</span><br><span class="line">		x=y;</span><br><span class="line">		y=t-a/b*y;</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt; inline T read()</span><br><span class="line">	&#123;</span><br><span class="line">		T num = 0, w = 1;</span><br><span class="line">		char c = 0;</span><br><span class="line">		while (c != &apos;-&apos; &amp;&amp; !isdigit(c)) c = getchar();</span><br><span class="line">		if (c == &apos;-&apos;) w = -1, c = getchar();</span><br><span class="line">		while (isdigit(c)) num = num * 10 + c - &apos;0&apos;, c = getchar();</span><br><span class="line">		return num * w;</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt; inline void write(T x)</span><br><span class="line">	&#123;</span><br><span class="line">		if (x &lt; 0) putchar(&apos;-&apos;), x = -x;</span><br><span class="line">		if (x / 10) write(x / 10);</span><br><span class="line">		putchar(x % 10 + &apos;0&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">long long cnt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	long long a,b,c,d;</span><br><span class="line">	a=Sonoda::read&lt;long long&gt;();</span><br><span class="line">	b=Sonoda::read&lt;long long&gt;();</span><br><span class="line">	c=Sonoda::read&lt;long long&gt;();</span><br><span class="line">	d=Sonoda::read&lt;long long&gt;();</span><br><span class="line">	long long gcd=Sonoda::GCD(c,d);</span><br><span class="line">	long long lcm=c*d/gcd;</span><br><span class="line">	long long blo=max(0LL,b/lcm-1);</span><br><span class="line">	long long w,l,dr;</span><br><span class="line">	w=lcm/c*blo;</span><br><span class="line">	long long lef=b-blo*lcm;</span><br><span class="line">	for(long long i=0;i&lt;=a-w;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if((lef-i*c)%d==0&amp;&amp;(lef-i*c)/d+w+i&lt;=a)</span><br><span class="line">		&#123;</span><br><span class="line">			dr=(lef-i*c)/d;</span><br><span class="line">			if(w&gt;=0&amp;&amp;dr&gt;=0&amp;&amp;a-w-dr&gt;=2)</span><br><span class="line">			&#123;</span><br><span class="line">				printf(&quot;%lld %lld %lld&quot;,w+i,dr,a-w-i-dr);</span><br><span class="line">				return 0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(i&gt;=10000000)</span><br><span class="line">		&#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;-1&quot;);	</span><br><span class="line">	return 0;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="D-Paint-the-Tree"><a href="#D-Paint-the-Tree" class="headerlink" title="D Paint the Tree"></a>D Paint the Tree</h2><h6 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h6><p>给定一棵节点数为$N$的无向树，对于每一个节点，有三种染色，每种染色所需要的代价为$V_{i,j},i\in{1,2,3},j\in[1,N]$。对于一颗树，一个合法的染色方法必须使得对于任意三元组$(x,y,z)$，其中$x$与$y$相连，$y$与$z$相连，保证$x,y,z$三者的颜色互不相同。问是否有合法染色方案，如果有，给出最小代价。</p>
+<h6 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h6><p>对性质进行分析，发现如果存在一个点有三个及以上的出度，显然不成立。所以，一个点最多只有两条出边。又因为原图为一棵树，所以一定是一条链。找到链首，以及第二个元素，枚举他们两者的颜色方案，此时整条链的染色方案也就定了下来，判断最小代价并在路径上存储答案即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">#include &lt;climits&gt;</span><br><span class="line">#define INF INT64_MAX</span><br><span class="line">using namespace std;</span><br><span class="line">namespace Sonoda</span><br><span class="line">&#123;</span><br><span class="line">	template&lt;typename T&gt; void swap(T &amp;a,T &amp;b)</span><br><span class="line">	&#123;</span><br><span class="line">		T t;</span><br><span class="line">		t=a;</span><br><span class="line">		a=b;</span><br><span class="line">		b=t;</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt; T GCD(T a,T b)</span><br><span class="line">	&#123;</span><br><span class="line">		if(b==0)</span><br><span class="line">		&#123;</span><br><span class="line">			return a;</span><br><span class="line">		&#125;</span><br><span class="line">		return GCD(b,a%b);</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt;T Qpow(T a,T b,T p)</span><br><span class="line">	&#123;</span><br><span class="line">		T res=1;</span><br><span class="line">		while(b)</span><br><span class="line">		&#123;</span><br><span class="line">			if(b&amp;1)</span><br><span class="line">			&#123;</span><br><span class="line">				res*=a;</span><br><span class="line">				res%=p;</span><br><span class="line">				b--;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				a*=a;</span><br><span class="line">				a%=p;</span><br><span class="line">				b&gt;&gt;=1;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br><span class="line">	template &lt;typename T&gt; void Ex_GCD(T a,T b,T &amp;x,T &amp;y)</span><br><span class="line">	&#123;</span><br><span class="line">		if(b==0)</span><br><span class="line">		&#123;</span><br><span class="line">			x=1;</span><br><span class="line">			y=0;</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		Ex_GCD(b,a%b,x,y);</span><br><span class="line">		T t=x;</span><br><span class="line">		x=y;</span><br><span class="line">		y=t-a/b*y;</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt; inline T read()</span><br><span class="line">	&#123;</span><br><span class="line">		T num = 0, w = 1;</span><br><span class="line">		char c = 0;</span><br><span class="line">		while (c != &apos;-&apos; &amp;&amp; !isdigit(c)) c = getchar();</span><br><span class="line">		if (c == &apos;-&apos;) w = -1, c = getchar();</span><br><span class="line">		while (isdigit(c)) num = num * 10 + c - &apos;0&apos;, c = getchar();</span><br><span class="line">		return num * w;</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt; inline void write(T x)</span><br><span class="line">	&#123;</span><br><span class="line">		if (x &lt; 0) putchar(&apos;-&apos;), x = -x;</span><br><span class="line">		if (x / 10) write(x / 10);</span><br><span class="line">		putchar(x % 10 + &apos;0&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">const long long MAXN=1000006;</span><br><span class="line">struct EDGE</span><br><span class="line">&#123;</span><br><span class="line">	long long _next,to,from;</span><br><span class="line">&#125;;</span><br><span class="line">EDGE edge[MAXN];</span><br><span class="line">long long head[MAXN],_count;</span><br><span class="line">void Add_Line(long long a,long long b)</span><br><span class="line">&#123;</span><br><span class="line">	_count++;</span><br><span class="line">	edge[_count].to=b;</span><br><span class="line">	edge[_count]._next=head[a];</span><br><span class="line">	head[a]=_count;</span><br><span class="line">&#125;</span><br><span class="line">long long outd[MAXN];</span><br><span class="line">long long v1[MAXN],v2[MAXN],v3[MAXN];</span><br><span class="line">long long pre[MAXN];</span><br><span class="line">long long book[MAXN];</span><br><span class="line">long long DFS(long long NowNode,long long color,long long lastcolor,long long fa)</span><br><span class="line">&#123;</span><br><span class="line">	long long res=0;</span><br><span class="line">	if(color==1)</span><br><span class="line">	&#123;</span><br><span class="line">		res+=v1[NowNode];</span><br><span class="line">	&#125;</span><br><span class="line">	if(color==2)</span><br><span class="line">	&#123;</span><br><span class="line">		res+=v2[NowNode];</span><br><span class="line">	&#125;</span><br><span class="line">	if(color==3)</span><br><span class="line">	&#123;</span><br><span class="line">		res+=v3[NowNode];</span><br><span class="line">	&#125;</span><br><span class="line">	for(long long i=head[NowNode];i;i=edge[i]._next)</span><br><span class="line">	&#123;</span><br><span class="line">		long long NextNode=edge[i].to;</span><br><span class="line">		if(fa==NextNode)</span><br><span class="line">		&#123;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==1&amp;&amp;lastcolor==2)</span><br><span class="line">		&#123;</span><br><span class="line">			res+=DFS(NextNode,3,1,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==2&amp;&amp;lastcolor==1)</span><br><span class="line">		&#123;</span><br><span class="line">			res+=DFS(NextNode,3,2,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==1&amp;&amp;lastcolor==3)</span><br><span class="line">		&#123;</span><br><span class="line">			res+=DFS(NextNode,2,1,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==2&amp;&amp;lastcolor==3)</span><br><span class="line">		&#123;</span><br><span class="line">			res+=DFS(NextNode,1,2,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==3&amp;&amp;lastcolor==1)</span><br><span class="line">		&#123;</span><br><span class="line">			res+=DFS(NextNode,2,3,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==3&amp;&amp;lastcolor==2)</span><br><span class="line">		&#123;</span><br><span class="line">			res+=DFS(NextNode,1,3,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return res;</span><br><span class="line">&#125;</span><br><span class="line">void Get_Ans(long long NowNode,long long color,long long lastcolor,long long fa)</span><br><span class="line">&#123;</span><br><span class="line">	if(color==1)</span><br><span class="line">	&#123;</span><br><span class="line">		book[NowNode]=1;</span><br><span class="line">	&#125;</span><br><span class="line">	if(color==2)</span><br><span class="line">	&#123;</span><br><span class="line">		book[NowNode]=2;</span><br><span class="line">	&#125;</span><br><span class="line">	if(color==3)</span><br><span class="line">	&#123;</span><br><span class="line">		book[NowNode]=3;</span><br><span class="line">	&#125;</span><br><span class="line">	for(long long i=head[NowNode];i;i=edge[i]._next)</span><br><span class="line">	&#123;</span><br><span class="line">		long long NextNode=edge[i].to;</span><br><span class="line">		if(fa==NextNode)</span><br><span class="line">		&#123;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==1&amp;&amp;lastcolor==2)</span><br><span class="line">		&#123;</span><br><span class="line">			Get_Ans(NextNode,3,1,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==2&amp;&amp;lastcolor==1)</span><br><span class="line">		&#123;</span><br><span class="line">			Get_Ans(NextNode,3,2,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==1&amp;&amp;lastcolor==3)</span><br><span class="line">		&#123;</span><br><span class="line">			Get_Ans(NextNode,2,1,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==2&amp;&amp;lastcolor==3)</span><br><span class="line">		&#123;</span><br><span class="line">			Get_Ans(NextNode,1,2,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==3&amp;&amp;lastcolor==1)</span><br><span class="line">		&#123;</span><br><span class="line">			Get_Ans(NextNode,2,3,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">		if(color==3&amp;&amp;lastcolor==2)</span><br><span class="line">		&#123;</span><br><span class="line">			Get_Ans(NextNode,1,3,NowNode);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	long long N;</span><br><span class="line">	N=Sonoda::read&lt;long long&gt;();</span><br><span class="line">	for(long long i=1;i&lt;=N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		scanf(&quot;%I64d&quot;,v1+i);</span><br><span class="line">	&#125;</span><br><span class="line">	for(long long i=1;i&lt;=N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		scanf(&quot;%I64d&quot;,v2+i);</span><br><span class="line">	&#125;</span><br><span class="line">	for(long long i=1;i&lt;=N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		scanf(&quot;%I64d&quot;,v3+i);</span><br><span class="line">	&#125;	</span><br><span class="line">	for(long long i=1;i&lt;N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		long long a=Sonoda::read&lt;long long&gt;();</span><br><span class="line">		long long b=Sonoda::read&lt;long long&gt;();</span><br><span class="line">		outd[a]++;</span><br><span class="line">		outd[b]++;</span><br><span class="line">		if(a&lt;b)</span><br><span class="line">		&#123;</span><br><span class="line">			swap(a,b);</span><br><span class="line">		&#125;</span><br><span class="line">		Add_Line(a,b);</span><br><span class="line">		Add_Line(b,a);</span><br><span class="line">		pre[a]=b;</span><br><span class="line">		pre[b]=a;</span><br><span class="line">		if(outd[a]&gt;2||outd[b]&gt;2)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;-1&quot;);</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;//必为链 </span><br><span class="line">	long long st=0;</span><br><span class="line">	for(long long i=1;i&lt;=N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(outd[i]==1)</span><br><span class="line">		&#123;</span><br><span class="line">			st=i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	long long nx=pre[st];</span><br><span class="line">	long long ans=INF;</span><br><span class="line">	long long now=v1[st]+DFS(nx,2,1,st);</span><br><span class="line">	if(ans&gt;now)</span><br><span class="line">	&#123;</span><br><span class="line">		ans=now;</span><br><span class="line">		Get_Ans(nx,2,1,st);</span><br><span class="line">		book[st]=1;</span><br><span class="line">	&#125;</span><br><span class="line">	now=v1[st]+DFS(nx,3,1,st);</span><br><span class="line">	if(ans&gt;now)</span><br><span class="line">	&#123;</span><br><span class="line">		ans=now;</span><br><span class="line">		Get_Ans(nx,3,1,st);</span><br><span class="line">		book[st]=1;</span><br><span class="line">	&#125;</span><br><span class="line">	now=v2[st]+DFS(nx,1,2,st);</span><br><span class="line">	if(ans&gt;now)</span><br><span class="line">	&#123;</span><br><span class="line">		ans=now;</span><br><span class="line">		Get_Ans(nx,1,2,st);</span><br><span class="line">		book[st]=2;</span><br><span class="line">	&#125;</span><br><span class="line">	now=v2[st]+DFS(nx,3,2,st);</span><br><span class="line">	if(ans&gt;now)</span><br><span class="line">	&#123;</span><br><span class="line">		ans=now;	</span><br><span class="line">		Get_Ans(nx,3,2,st);</span><br><span class="line">		book[st]=2;</span><br><span class="line">	&#125;</span><br><span class="line">	now=v3[st]+DFS(nx,1,3,st);</span><br><span class="line">	if(ans&gt;now)</span><br><span class="line">	&#123;</span><br><span class="line">		ans=now;</span><br><span class="line">		Get_Ans(nx,1,3,st);</span><br><span class="line">		book[st]=3;</span><br><span class="line">	&#125;</span><br><span class="line">	now=v3[st]+DFS(nx,2,3,st);</span><br><span class="line">	if(ans&gt;now)</span><br><span class="line">	&#123;</span><br><span class="line">		ans=now;</span><br><span class="line">		Get_Ans(nx,2,3,st);</span><br><span class="line">		book[st]=3;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%I64d\n&quot;,ans);</span><br><span class="line">	for(long long i=1;i&lt;=N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%I64d &quot;,book[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="E-Minimizing-Difference"><a href="#E-Minimizing-Difference" class="headerlink" title="E Minimizing Difference"></a>E Minimizing Difference</h2><h6 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h6><p>给定$N$个数的序列与$K$次操作，其中，一次操作可以将某一个数$+1$或者$-1$。问在最多$K$次操作后，这$N$个数中的最大值与最小值的最小差是多少。</p>
+<h6 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h6><p>首先，很显然的贪心性质：要让最小的变大，最大的变小才会对答案有贡献。</p>
+<p>那么考虑是让小的变大还是让大的变小。</p>
+<p>先按大小排序，然后用两个指针从两头向中间扫，如果遇到和当前值相同的，就将每次需要付出的代价++，每跳到下一个数，便比较是最小的少，还是最大的少。选择少的去进行操作。</p>
+<p>如果离下一个数太远不能到达，就尽可能往前走。</p>
+<p>代码细节比较多，注意实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">using namespace std;</span><br><span class="line">namespace Sonoda</span><br><span class="line">&#123;</span><br><span class="line">	template&lt;typename T&gt; void swap(T &amp;a,T &amp;b)</span><br><span class="line">	&#123;</span><br><span class="line">		T t;</span><br><span class="line">		t=a;</span><br><span class="line">		a=b;</span><br><span class="line">		b=t;</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt; T GCD(T a,T b)</span><br><span class="line">	&#123;</span><br><span class="line">		if(b==0)</span><br><span class="line">		&#123;</span><br><span class="line">			return a;</span><br><span class="line">		&#125;</span><br><span class="line">		return GCD(b,a%b);</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt;T Qpow(T a,T b,T p)</span><br><span class="line">	&#123;</span><br><span class="line">		T res=1;</span><br><span class="line">		while(b)</span><br><span class="line">		&#123;</span><br><span class="line">			if(b&amp;1)</span><br><span class="line">			&#123;</span><br><span class="line">				res*=a;</span><br><span class="line">				res%=p;</span><br><span class="line">				b--;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				a*=a;</span><br><span class="line">				a%=p;</span><br><span class="line">				b&gt;&gt;=1;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br><span class="line">	template &lt;typename T&gt; void Ex_GCD(T a,T b,T &amp;x,T &amp;y)</span><br><span class="line">	&#123;</span><br><span class="line">		if(b==0)</span><br><span class="line">		&#123;</span><br><span class="line">			x=1;</span><br><span class="line">			y=0;</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		Ex_GCD(b,a%b,x,y);</span><br><span class="line">		T t=x;</span><br><span class="line">		x=y;</span><br><span class="line">		y=t-a/b*y;</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt; inline T read()</span><br><span class="line">	&#123;</span><br><span class="line">		T num = 0, w = 1;</span><br><span class="line">		char c = 0;</span><br><span class="line">		while (c != &apos;-&apos; &amp;&amp; !isdigit(c)) c = getchar();</span><br><span class="line">		if (c == &apos;-&apos;) w = -1, c = getchar();</span><br><span class="line">		while (isdigit(c)) num = num * 10 + c - &apos;0&apos;, c = getchar();</span><br><span class="line">		return num * w;</span><br><span class="line">	&#125;</span><br><span class="line">	template&lt;typename T&gt; inline void write(T x)</span><br><span class="line">	&#123;</span><br><span class="line">		if (x &lt; 0) putchar(&apos;-&apos;), x = -x;</span><br><span class="line">		if (x / 10) write(x / 10);</span><br><span class="line">		putchar(x % 10 + &apos;0&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">typedef long long fhk;</span><br><span class="line">const int MAXN=100005;</span><br><span class="line">fhk a[MAXN];</span><br><span class="line">fhk N,K;</span><br><span class="line">fhk ans;</span><br><span class="line">fhk nowl,nowr;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	N=Sonoda::read&lt;fhk&gt;();</span><br><span class="line">	K=Sonoda::read&lt;fhk&gt;();</span><br><span class="line">	for(int i=1;i&lt;=N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]=Sonoda::read&lt;fhk&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	sort(a+1,a+1+N);</span><br><span class="line">	fhk l=1;</span><br><span class="line">	fhk r=N;</span><br><span class="line">	nowl=1;</span><br><span class="line">	nowr=1;</span><br><span class="line">	fhk res=K;</span><br><span class="line">	fhk lef=0;</span><br><span class="line">	while(l&lt;r&amp;&amp;res)</span><br><span class="line">	&#123;</span><br><span class="line">		while(l&lt;r&amp;&amp;a[l]==a[l+1])</span><br><span class="line">		&#123;</span><br><span class="line">			nowl++;</span><br><span class="line">			l++;</span><br><span class="line">		&#125;</span><br><span class="line">		while(l&lt;r&amp;&amp;a[r]==a[r-1])</span><br><span class="line">		&#123;</span><br><span class="line">			nowr++;</span><br><span class="line">			r--;</span><br><span class="line">		&#125;</span><br><span class="line">		if(nowl&lt;=nowr)</span><br><span class="line">		&#123;</span><br><span class="line">			fhk cha=a[l+1]-a[l];</span><br><span class="line">			if(res&gt;=cha*nowl)</span><br><span class="line">			&#123;</span><br><span class="line">				res-=cha*nowl;</span><br><span class="line">				l++;</span><br><span class="line">				nowl++;</span><br><span class="line">			&#125;</span><br><span class="line">			else if(res&lt;cha*nowl)</span><br><span class="line">			&#123;</span><br><span class="line">				lef=res/nowl;</span><br><span class="line">				res=0;</span><br><span class="line">			&#125;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">		if(nowl&gt;nowr)</span><br><span class="line">		&#123;</span><br><span class="line">			fhk cha=a[r]-a[r-1];</span><br><span class="line">			if(res&gt;=cha*nowr)</span><br><span class="line">			&#123;</span><br><span class="line">				res-=cha*nowr;</span><br><span class="line">				r--;</span><br><span class="line">				nowr++;</span><br><span class="line">			&#125;</span><br><span class="line">			else if(res&lt;cha*nowr)</span><br><span class="line">			&#123;</span><br><span class="line">				lef=res/nowr;</span><br><span class="line">				res=0;</span><br><span class="line">			&#125;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%I64d&quot;,a[r]-a[l]-lef);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CF/" rel="tag"># CF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/09/线段树/" rel="next" title="线段树">
+                <i class="fa fa-chevron-left"></i> 线段树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MjY5OC8xOTI0NQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/icon.png" alt="CJ_Tracer">
+            
+              <p class="site-author-name" itemprop="name">CJ_Tracer</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Pen-and-Pencil"><span class="nav-number">1.</span> <span class="nav-text">A Pen and Pencil</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Rooms-and-Staircases"><span class="nav-number">2.</span> <span class="nav-text">B Rooms and Staircases</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Solution"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Football-Season"><span class="nav-number">3.</span> <span class="nav-text">C Football Season</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#题目描述"><span class="nav-number">3.0.0.0.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Solution-1"><span class="nav-number">3.0.0.0.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Paint-the-Tree"><span class="nav-number">4.</span> <span class="nav-text">D Paint the Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#题目描述-1"><span class="nav-number">4.0.0.0.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Solution-2"><span class="nav-number">4.0.0.0.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Minimizing-Difference"><span class="nav-number">5.</span> <span class="nav-text">E Minimizing Difference</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#题目描述-2"><span class="nav-number">5.0.0.0.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Solution-3"><span class="nav-number">5.0.0.0.2.</span> <span class="nav-text">Solution</span></a></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CJ_Tracer</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/10/15/Codeforces-Round-592-Div-2/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>
