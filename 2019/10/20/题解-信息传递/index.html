@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="联赛阶段比较万能的数据结构。">
-<meta name="keywords" content="模板,线段树">
+  <meta name="description" content="题目链接">
+<meta name="keywords" content="图论,DFS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线段树">
-<meta property="og:url" content="http://yoursite.com/2019/10/09/线段树/index.html">
+<meta property="og:title" content="题解 信息传递">
+<meta property="og:url" content="http://yoursite.com/2019/10/20/题解-信息传递/index.html">
 <meta property="og:site_name" content="CJ_Tracerのblog">
-<meta property="og:description" content="联赛阶段比较万能的数据结构。">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-20T13:16:28.764Z">
+<meta property="og:updated_time" content="2019-10-20T13:35:24.280Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线段树">
-<meta name="twitter:description" content="联赛阶段比较万能的数据结构。">
+<meta name="twitter:title" content="题解 信息传递">
+<meta name="twitter:description" content="题目链接">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/09/线段树/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/20/题解-信息传递/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>线段树 | CJ_Tracerのblog</title>
+  <title>题解 信息传递 | CJ_Tracerのblog</title>
   
 
 
@@ -344,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/线段树/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/20/题解-信息传递/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CJ_Tracer">
@@ -361,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">线段树
+          <h1 class="post-title" itemprop="name headline">题解 信息传递
 
               
             
@@ -387,24 +387,12 @@
                 
               
 
-              <time title="创建时间：2019-10-09 16:05:59" itemprop="dateCreated datePublished" datetime="2019-10-09T16:05:59+08:00">2019-10-09</time>
+              <time title="创建时间：2019-10-20 21:07:44 / 修改时间：21:35:24" itemprop="dateCreated datePublished" datetime="2019-10-20T21:07:44+08:00">2019-10-20</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-10-20 21:16:28" itemprop="dateModified" datetime="2019-10-20T21:16:28+08:00">2019-10-20</time>
               
             
           </span>
@@ -421,7 +409,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习心得/" itemprop="url" rel="index"><span itemprop="name">学习心得</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
 
                 
                 
@@ -463,20 +451,16 @@
       
 
       
-        <p>联赛阶段比较万能的数据结构。</p>
+        <p><a href="https://www.luogu.org/problem/P2661" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
-<p>用结构体和指针来维护。</p>
-<p>一个结构体大概长这样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">struct NODE</span><br><span class="line">&#123;</span><br><span class="line">	int l,r,tag,sum;</span><br><span class="line">	NODE *ls,*rs;</span><br><span class="line">	NODE()&#123;ls=rs=nullptr;&#125;</span><br><span class="line">	NODE(const int &amp;il,const int &amp;ir,const int &amp;s):l(il),r(ir),sum(s)&#123;tag=0,ls=rs=nullptr;&#125;</span><br><span class="line">	NODE&amp; Update()</span><br><span class="line">	&#123;</span><br><span class="line">		if(ls==nullptr)</span><br><span class="line">		&#123;</span><br><span class="line">			return *this;</span><br><span class="line">		&#125;</span><br><span class="line">		sum=ls-&gt;sum+rs-&gt;sum;</span><br><span class="line">		return *this;</span><br><span class="line">	&#125;</span><br><span class="line">	NODE&amp; Push_Down()</span><br><span class="line">	&#123;</span><br><span class="line">		if(ls!=nullptr)</span><br><span class="line">		&#123;</span><br><span class="line">			ls-&gt;tag+=tag;</span><br><span class="line">			ls-&gt;sum+=(ls-&gt;r-ls-&gt;l+1)*tag;</span><br><span class="line">		&#125;</span><br><span class="line">		if(rs!=nullptr)</span><br><span class="line">		&#123;</span><br><span class="line">			rs-&gt;tag+=tag;</span><br><span class="line">			rs-&gt;sum+=(rs-&gt;r-rs-&gt;l+1)*tag;</span><br><span class="line">		&#125;</span><br><span class="line">		tag=0;</span><br><span class="line">		return *this;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>其中 Update和Push_Down分别是更新当前节点和下传懒标记（这个待会儿会说）。</p>
-<p>两个构造函数对函数赋初值，并且为它建立两个指向左儿子与右儿子的节点（一开始指向空）。</p>
-<p>然后是维护的区间左右端点，懒标记和维护的值。</p>
-<h4 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h4><p>自底向上建树。</p>
-<p>每次“合并”两个节点。</p>
-<p>如果有剩余的一个，直接把他往上提一层。且他肯定不会有儿子节点了。</p>
-<p>大概如此。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">void Build(int siz)</span><br><span class="line">&#123;</span><br><span class="line">	NODE *a,*b,*t;</span><br><span class="line">	queue &lt;NODE*&gt; remain,add;</span><br><span class="line">	for(int i=1;i&lt;=siz;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		t=new NODE(i,i,v[i]);</span><br><span class="line">		remain.push(t);</span><br><span class="line">	&#125;</span><br><span class="line">	for(;remain.size()&gt;=2;Sonoda::swap(remain,add))</span><br><span class="line">	&#123;</span><br><span class="line">		while(remain.size()&gt;=2)</span><br><span class="line">		&#123;</span><br><span class="line">			a=remain.front();</span><br><span class="line">			remain.pop();</span><br><span class="line">			b=remain.front();</span><br><span class="line">			remain.pop();</span><br><span class="line">			t=new NODE(a-&gt;l,b-&gt;r,a-&gt;sum+b-&gt;sum);</span><br><span class="line">			t-&gt;ls=a;</span><br><span class="line">			t-&gt;rs=b;</span><br><span class="line">			t-&gt;Update();</span><br><span class="line">			add.push(t);</span><br><span class="line">		&#125;</span><br><span class="line">		if(!remain.empty())</span><br><span class="line">		&#123;</span><br><span class="line">			t=remain.front();</span><br><span class="line">			remain.pop();</span><br><span class="line">			add.push(t);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	root=remain.front();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="区间加"><a href="#区间加" class="headerlink" title="区间加"></a>区间加</h4>
+<p><strong>要求求一个有向图的最小环。</strong></p>
+<p>可以使用DFS来实现。</p>
+<p>使用两个标记，一个（inc）表示是否在这次DFS中寻找过，一个（vis）表示有没有在别的环上出现过。</p>
+<p>第一次访问到的时候给inc打上标记。回溯（表明与他强连通的都搜完了）的时候给vis打上标记。</p>
+<p>再次访问到的时候，此时inc已经被打上标记了。那么就判断答案和当前环的大小谁更小即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">namespace</span> Sonoda</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(T &amp;a,T &amp;b)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T t;</span><br><span class="line">		t=a;</span><br><span class="line">		a=b;</span><br><span class="line">		b=t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">GCD</span><span class="params">(T a,T b)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> a;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> GCD(b,a%b);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;<span class="function">T <span class="title">Qpow</span><span class="params">(T a,T b,T p)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T res=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(b)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res*=a;</span><br><span class="line">				res%=p;</span><br><span class="line">				b--;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				a*=a;</span><br><span class="line">				a%=p;</span><br><span class="line">				b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">void</span> <span class="title">Ex_GCD</span><span class="params">(T a,T b,T &amp;x,T &amp;y)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			x=<span class="number">1</span>;</span><br><span class="line">			y=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		Ex_GCD(b,a%b,x,y);</span><br><span class="line">		T t=x;</span><br><span class="line">		x=y;</span><br><span class="line">		y=t-a/b*y;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T num = <span class="number">0</span>, w = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">char</span> c = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span> (c != <span class="string">'-'</span> &amp;&amp; !<span class="built_in">isdigit</span>(c)) c = getchar();</span><br><span class="line">		<span class="keyword">if</span> (c == <span class="string">'-'</span>) w = <span class="number">-1</span>, c = getchar();</span><br><span class="line">		<span class="keyword">while</span> (<span class="built_in">isdigit</span>(c)) num = num * <span class="number">10</span> + c - <span class="string">'0'</span>, c = getchar();</span><br><span class="line">		<span class="keyword">return</span> num * w;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">'-'</span>), x = -x;</span><br><span class="line">		<span class="keyword">if</span> (x / <span class="number">10</span>) write(x / <span class="number">10</span>);</span><br><span class="line">		<span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">200050</span>;</span><br><span class="line"><span class="keyword">bool</span> inc[MAXN];</span><br><span class="line"><span class="keyword">int</span> ans=INF,dis[MAXN];</span><br><span class="line"><span class="keyword">bool</span> vis[MAXN];</span><br><span class="line"><span class="keyword">int</span> l[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> NowNode,<span class="keyword">int</span> now)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(vis[NowNode])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(inc[NowNode])</span><br><span class="line">	&#123;</span><br><span class="line">		ans=min(ans,now-dis[NowNode]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		inc[NowNode]=<span class="number">1</span>;</span><br><span class="line">		dis[NowNode]=now;</span><br><span class="line">		DFS(l[NowNode],now+<span class="number">1</span>);</span><br><span class="line">		vis[NowNode]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> N=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		l[i]=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		DFS(i,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><del>其实主要剽窃了xze的想法</del></p>
+
       
     </div>
 
@@ -499,9 +483,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/模板/" rel="tag"># 模板</a>
+            <a href="/tags/图论/" rel="tag"># 图论</a>
           
-            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+            <a href="/tags/DFS/" rel="tag"># DFS</a>
           
         </div>
       
@@ -514,8 +498,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/09/纪中游记/" rel="next" title="纪中游记">
-                <i class="fa fa-chevron-left"></i> 纪中游记
+              <a href="/2019/10/15/Codeforces-Round-592-Div-2/" rel="next" title="Codeforces Round #592 (Div.2)">
+                <i class="fa fa-chevron-left"></i> Codeforces Round #592 (Div.2)
               </a>
             
           </div>
@@ -524,8 +508,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/15/Codeforces-Round-592-Div-2/" rel="prev" title="Codeforces Round #592 (Div.2)">
-                Codeforces Round #592 (Div.2) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/20/Tarjan详解/" rel="prev" title="Tarjan详解">
+                Tarjan详解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -576,17 +560,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -678,23 +653,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#建树"><span class="nav-number">1.</span> <span class="nav-text">建树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区间加"><span class="nav-number">2.</span> <span class="nav-text">区间加</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
@@ -871,7 +829,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2019/10/09/线段树/'
+    refer: '2019/10/20/题解-信息传递/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
