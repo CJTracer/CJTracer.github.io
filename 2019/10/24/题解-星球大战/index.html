@@ -96,14 +96,18 @@
 
 
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="题目链接 给定一张图（不一定联通），每次删掉一个点（以及所有出边），问每次操作后剩余连通块个数。">
+<meta name="keywords" content="图论,并查集">
+<meta property="og:type" content="article">
 <meta property="og:title" content="题解 星球大战">
 <meta property="og:url" content="http://yoursite.com/2019/10/24/题解-星球大战/index.html">
 <meta property="og:site_name" content="CJ_Tracerのblog">
+<meta property="og:description" content="题目链接 给定一张图（不一定联通），每次删掉一个点（以及所有出边），问每次操作后剩余连通块个数。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-24T13:11:19.662Z">
+<meta property="og:updated_time" content="2019-10-28T13:19:21.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="题解 星球大战">
+<meta name="twitter:description" content="题目链接 给定一张图（不一定联通），每次删掉一个点（以及所有出边），问每次操作后剩余连通块个数。">
 
 
 
@@ -387,8 +391,42 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-28 21:19:21" itemprop="dateModified" datetime="2019-10-28T21:19:21+08:00">2019-10-28</time>
+              
+            
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -425,7 +463,16 @@
       
 
       
-        
+        <p><a href="https://www.luogu.org/problem/P1197" target="_blank" rel="noopener">题目链接</a> 给定一张图（不一定联通），每次删掉一个点（以及所有出边），问每次操作后剩余连通块个数。</p>
+<a id="more"></a>
+<p>考虑最终情况往回倒退。</p>
+<p>假设所有的点都独立，答案就为$N$。</p>
+<p>离线记录所有操作，存起来。</p>
+<p>如果是炸了的点就忽略。</p>
+<p>用并查集维护连通块，每当发现有两个连通块合并，就把当前答案减1。</p>
+<p>是一道非常不错的题目，值得重做。</p>
+<p>代码中的siz数组没有用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">namespace</span> Sonoda</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(T &amp;a,T &amp;b)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T t;</span><br><span class="line">		t=a;</span><br><span class="line">		a=b;</span><br><span class="line">		b=t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">GCD</span><span class="params">(T a,T b)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> a;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> GCD(b,a%b);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;<span class="function">T <span class="title">Qpow</span><span class="params">(T a,T b,T p)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T res=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(b)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res*=a;</span><br><span class="line">				res%=p;</span><br><span class="line">				b--;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				a*=a;</span><br><span class="line">				a%=p;</span><br><span class="line">				b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">void</span> <span class="title">Ex_GCD</span><span class="params">(T a,T b,T &amp;x,T &amp;y)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			x=<span class="number">1</span>;</span><br><span class="line">			y=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		Ex_GCD(b,a%b,x,y);</span><br><span class="line">		T t=x;</span><br><span class="line">		x=y;</span><br><span class="line">		y=t-a/b*y;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T num = <span class="number">0</span>, w = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">char</span> c = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span> (c != <span class="string">'-'</span> &amp;&amp; !<span class="built_in">isdigit</span>(c)) c = getchar();</span><br><span class="line">		<span class="keyword">if</span> (c == <span class="string">'-'</span>) w = <span class="number">-1</span>, c = getchar();</span><br><span class="line">		<span class="keyword">while</span> (<span class="built_in">isdigit</span>(c)) num = num * <span class="number">10</span> + c - <span class="string">'0'</span>, c = getchar();</span><br><span class="line">		<span class="keyword">return</span> num * w;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">'-'</span>), x = -x;</span><br><span class="line">		<span class="keyword">if</span> (x / <span class="number">10</span>) write(x / <span class="number">10</span>);</span><br><span class="line">		<span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">440000</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">EDGE</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> from,to,_next;</span><br><span class="line">&#125;;</span><br><span class="line">EDGE edge[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> _count,head[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add_Line</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	_count++;</span><br><span class="line">	edge[_count].to=b;</span><br><span class="line">	edge[_count].from=a;</span><br><span class="line">	edge[_count]._next=head[a];</span><br><span class="line">	head[a]=_count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> father[MAXN],siz[MAXN];</span><br><span class="line"><span class="keyword">int</span> ans[MAXN];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x==father[x]?x:father[x]=Find(father[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> r1=Find(x);</span><br><span class="line">	<span class="keyword">int</span> r2=Find(y);</span><br><span class="line">	<span class="keyword">if</span>(r1!=r2)</span><br><span class="line">	&#123;</span><br><span class="line">		father[r1]=r2;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> boom[MAXN],vis[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> N=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">int</span> M=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		father[i]=i;</span><br><span class="line">		siz[i]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=M;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> a=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">		<span class="keyword">int</span> b=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">		Add_Line(a,b);</span><br><span class="line">		Add_Line(b,a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> K=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=K;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> a=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">		boom[i]=a;</span><br><span class="line">		vis[a]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> now=N-K;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(vis[i]) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=head[i];j;j=edge[j]._next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> NextNode=edge[j].to;</span><br><span class="line">			<span class="keyword">if</span>(vis[NextNode])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">int</span> r12=Find(edge[j].to),r11=Find(edge[j].from);</span><br><span class="line">			<span class="keyword">if</span>(r11!=r12)</span><br><span class="line">			&#123;</span><br><span class="line">				now--;</span><br><span class="line">				Merge(r11,r12);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=K;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		ans[i]=now;</span><br><span class="line">		now++;</span><br><span class="line">		<span class="keyword">int</span> NowNode=boom[i];</span><br><span class="line">		vis[NowNode]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=head[NowNode];j;j=edge[j]._next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> NextNode=edge[j].to;</span><br><span class="line">			<span class="keyword">if</span>(vis[NextNode])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">int</span> r2=Find(NextNode),r1=Find(NowNode);</span><br><span class="line">			<span class="keyword">if</span>(r1!=r2)</span><br><span class="line">			&#123;</span><br><span class="line">				now--;</span><br><span class="line">				Merge(r1,r2);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,now);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=K;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -445,6 +492,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图论/" rel="tag"># 图论</a>
+          
+            <a href="/tags/并查集/" rel="tag"># 并查集</a>
+          
+        </div>
       
 
       
@@ -535,7 +590,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -585,7 +640,21 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

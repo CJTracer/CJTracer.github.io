@@ -96,14 +96,20 @@
 
 
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="分层图一般解决更改K个边权为0的问题。">
+<meta name="keywords" content="图论,最短路">
+<meta property="og:type" content="article">
 <meta property="og:title" content="分层图最短路">
 <meta property="og:url" content="http://yoursite.com/2019/10/24/分层图最短路/index.html">
 <meta property="og:site_name" content="CJ_Tracerのblog">
+<meta property="og:description" content="分层图一般解决更改K个边权为0的问题。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-24T13:12:13.006Z">
+<meta property="og:image" content="http://yoursite.com/2019/10/24/分层图最短路/Inked10006_LI.jpg">
+<meta property="og:updated_time" content="2019-10-28T13:13:34.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分层图最短路">
+<meta name="twitter:description" content="分层图一般解决更改K个边权为0的问题。">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/24/分层图最短路/Inked10006_LI.jpg">
 
 
 
@@ -383,16 +389,46 @@
                 
               
 
-              <time title="创建时间：2019-10-24 21:12:12 / 修改时间：21:12:13" itemprop="dateCreated datePublished" datetime="2019-10-24T21:12:12+08:00">2019-10-24</time>
+              <time title="创建时间：2019-10-24 21:12:12" itemprop="dateCreated datePublished" datetime="2019-10-24T21:12:12+08:00">2019-10-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-28 21:13:34" itemprop="dateModified" datetime="2019-10-28T21:13:34+08:00">2019-10-28</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习心得/" itemprop="url" rel="index"><span itemprop="name">学习心得</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -429,7 +465,17 @@
       
 
       
-        
+        <p>分层图一般解决更改K个边权为0的问题。</p>
+<a id="more"></a>
+<p>看<a href="https://www.luogu.org/problem/P4568" target="_blank" rel="noopener">例题</a>，如果不知道分层图，这道题难以下手。但是如果知道，这道题就是大水题。</p>
+<h2 id="啥是分层图"><a href="#啥是分层图" class="headerlink" title="啥是分层图"></a>啥是分层图</h2><p>对于路径上可以免费K条边的最短路。我们把这张图复制K张，新图有$K+1$个原图。然后，对于每两张相同的图之间，若两个点有边，则把上一张图的点连向下一条边，且边权为0。特别地，对于每张图的终点，要向下一张图的终点连边权为0的边（防止前面走的到但后面卡住了即用小于K次免费就可以到终点）。</p>
+<p>大致如图。</p>
+<p><img src="Inked10006_LI.jpg" alt="分层图"></p>
+<p>看看代码实现吧！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">namespace</span> Sonoda</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(T &amp;a,T &amp;b)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T t;</span><br><span class="line">		t=a;</span><br><span class="line">		a=b;</span><br><span class="line">		b=t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">GCD</span><span class="params">(T a,T b)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> a;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> GCD(b,a%b);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;<span class="function">T <span class="title">Qpow</span><span class="params">(T a,T b,T p)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T res=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(b)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res*=a;</span><br><span class="line">				res%=p;</span><br><span class="line">				b--;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				a*=a;</span><br><span class="line">				a%=p;</span><br><span class="line">				b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">void</span> <span class="title">Ex_GCD</span><span class="params">(T a,T b,T &amp;x,T &amp;y)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			x=<span class="number">1</span>;</span><br><span class="line">			y=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		Ex_GCD(b,a%b,x,y);</span><br><span class="line">		T t=x;</span><br><span class="line">		x=y;</span><br><span class="line">		y=t-a/b*y;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T num = <span class="number">0</span>, w = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">char</span> c = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span> (c != <span class="string">'-'</span> &amp;&amp; !<span class="built_in">isdigit</span>(c)) c = getchar();</span><br><span class="line">		<span class="keyword">if</span> (c == <span class="string">'-'</span>) w = <span class="number">-1</span>, c = getchar();</span><br><span class="line">		<span class="keyword">while</span> (<span class="built_in">isdigit</span>(c)) num = num * <span class="number">10</span> + c - <span class="string">'0'</span>, c = getchar();</span><br><span class="line">		<span class="keyword">return</span> num * w;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">'-'</span>), x = -x;</span><br><span class="line">		<span class="keyword">if</span> (x / <span class="number">10</span>) write(x / <span class="number">10</span>);</span><br><span class="line">		<span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">5000050</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">EDGE</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> _next,to,w;</span><br><span class="line">&#125;;</span><br><span class="line">EDGE edge[MAXN];</span><br><span class="line"><span class="keyword">int</span> _count,head[MAXN];</span><br><span class="line"><span class="keyword">int</span> dis[MAXN],vis[MAXN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">NODE</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> dis,pos;</span><br><span class="line">&#125;;</span><br><span class="line">NODE heap[MAXN];</span><br><span class="line"><span class="keyword">int</span> siz;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add_Line</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b,<span class="keyword">const</span> <span class="keyword">int</span> &amp;c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	_count++;</span><br><span class="line">	edge[_count]._next=head[a];</span><br><span class="line">	edge[_count].to=b;</span><br><span class="line">	edge[_count].w=c;</span><br><span class="line">	head[a]=_count;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(NODE x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	siz++;</span><br><span class="line">	heap[siz]=x;</span><br><span class="line">	<span class="keyword">int</span> NowNode=siz;</span><br><span class="line">	<span class="keyword">while</span>(NowNode&gt;&gt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> NextNode=NowNode&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(heap[NextNode].dis&gt;heap[NowNode].dis)</span><br><span class="line">		&#123;</span><br><span class="line">			Sonoda::swap(heap[NextNode],heap[NowNode]);</span><br><span class="line">			NowNode=NextNode;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Sonoda::swap(heap[siz],heap[<span class="number">1</span>]);</span><br><span class="line">	siz--;</span><br><span class="line">	<span class="keyword">int</span> NowNode=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>((NowNode&lt;&lt;<span class="number">1</span>)&lt;=siz)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> NextNode=NowNode&lt;&lt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(NextNode+<span class="number">1</span>&lt;=siz&amp;&amp;heap[NextNode+<span class="number">1</span>].dis&lt;heap[NextNode].dis)</span><br><span class="line">		&#123;</span><br><span class="line">			NextNode++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(heap[NextNode].dis&lt;heap[NowNode].dis)</span><br><span class="line">		&#123;</span><br><span class="line">			Sonoda::swap(heap[NowNode],heap[NextNode]);</span><br><span class="line">			NowNode=NextNode;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">NODE <span class="title">top</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> heap[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> N=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">int</span> M=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">int</span> K=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">int</span> S=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">int</span> T=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	S++;</span><br><span class="line">	T++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=M;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> a,b,c;</span><br><span class="line">		a=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">		b=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">		c=Sonoda::read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">		a++;</span><br><span class="line">		b++;</span><br><span class="line">		Add_Line(a,b,c);</span><br><span class="line">		Add_Line(b,a,c);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=K;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			Add_Line(a+(j*N),b+(j*N),c);</span><br><span class="line">			Add_Line(b+(j*N),a+(j*N),c);</span><br><span class="line">			Add_Line(a+(j<span class="number">-1</span>)*N,b+(j)*N,<span class="number">0</span>);</span><br><span class="line">			Add_Line(b+(j<span class="number">-1</span>)*N,a+(j)*N,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=K;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		Add_Line(T+(i<span class="number">-1</span>)*N,T+(i)*N,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(dis,INF,<span class="keyword">sizeof</span>(dis));</span><br><span class="line">	dis[S]=<span class="number">0</span>;</span><br><span class="line">	push(&#123;<span class="number">0</span>,S&#125;);</span><br><span class="line">	<span class="keyword">while</span>(siz)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> NowNode=top().pos;</span><br><span class="line">		pop();</span><br><span class="line">		<span class="keyword">if</span>(vis[NowNode])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		vis[NowNode]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[NowNode];i;i=edge[i]._next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> NextNode=edge[i].to;</span><br><span class="line">			<span class="keyword">if</span>(dis[NextNode]&gt;dis[NowNode]+edge[i].w)</span><br><span class="line">			&#123;</span><br><span class="line">				dis[NextNode]=dis[NowNode]+edge[i].w;</span><br><span class="line">				push(&#123;dis[NextNode],NextNode&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,dis[N*(K)+T]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意Add_Line的操作要加每个复制的图中的边，每两个相邻复制的图的免费边。</p>
+<p>注意终点是最后一个图里的。</p>
+
       
     </div>
 
@@ -449,6 +495,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图论/" rel="tag"># 图论</a>
+          
+            <a href="/tags/最短路/" rel="tag"># 最短路</a>
+          
+        </div>
       
 
       
@@ -521,8 +575,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -539,7 +602,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -589,7 +652,21 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -614,6 +691,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#啥是分层图"><span class="nav-number">1.</span> <span class="nav-text">啥是分层图</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
